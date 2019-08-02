@@ -3,5 +3,9 @@ sap.ui.define([
 ], function(Controller) {
   "use strict";
 
-  return Controller.extend("com.myorg.myUI5App.controller.MainView", {});
+  return Controller.extend("com.myorg.myUI5App.controller.MainView", {
+    onShowHello: function() {
+      alert("hello ui5");
+    }
+  });
 });
