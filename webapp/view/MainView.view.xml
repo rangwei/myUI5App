@@ -1,13 +1,24 @@
- <mvc:View controllerName="com.myorg.myUI5App.controller.MainView"
-	displayBlock="true"
-	xmlns="sap.m"
+<mvc:View controllerName="com.myorg.myUI5App.controller.MainView" displayBlock="true" 
+	xmlns="sap.m" 
 	xmlns:mvc="sap.ui.core.mvc">
 	<App id="idAppControl">
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
-					<Button text="Show Hello"
-					press=".onShowHello"/>
+					<Button text="Show Hello" press=".onShowHello"/>
+					<Input value="{/recipient/name}" valueLiveUpdate="true" width="60%"/>
+					<List headerText="{i18n>invoiceListTitle}" class="sapUiResponsiveMargin" width="auto" items="{invoice>/Invoices}">
+						<items>
+							<ObjectListItem title="{invoice>Quantity} x {invoice>ProductName}" 
+											number="{
+												parts: [{path: 'invoice>ExtendedPrice'}, {path: 'view>/currency'}],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {
+													showMeasure: false
+												}
+											}"/>
+						</items>
+					</List>
 				</content>
 			</Page>
 		</pages>
